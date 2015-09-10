@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Weddings263</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Weddings263</string>
+    <string name="title_activity_card_view">CardViewActivity</string>
+    <string name="title_activity_about_weddings263">About Weddings263</string>
+
+    <string name="action_exit">Exit</string>
+
+    <string name="rate_us">Rate us!</string>
+    <string name="rate_us_full">Rate this app in the Google Play Store</string>
+
+    <string name="build_version">Build Version</string>
+    <string name="build_version_full">1.0.1.2344</string>
+
+
+    <string name="weddings263_key">Weddings263 Key</string>
+    <string name="weddings263_key_full">Zkm7SXTdhtvfAsNuW0gilw8YZ1yHgcIaZ6Fz6Xia</string>
+
+    <string name="app_key">Zkm7SXTdhtvfAsNuW0gilw8YZ1yHgcIaZ6Fz6Xia</string>
+
+    <string name="client_key">9C9lUNyxNhAXyHKJCvKxsjiY6Jo3o13ab6wA08Ri</string>
+    <string name="master_key">rRomBuByx2GlzrIKjl5ciAASXqChTVfa9abIteKf</string>
+
+</resources>
