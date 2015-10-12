@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.samsoft.weddings263.AddReviewActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_addreview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/AppTheme"></android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar_addreview"
+        android:layout_marginTop="40dp"
+        android:text="Your name" />
+
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/tvName"
+        android:layout_centerHorizontal="true"
+        android:hint="nickname"
+        android:textSize="12dp" />
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etName"
+        android:layout_marginTop="28dp"
+        android:text="Title" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/tvTitle"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName"
+        android:hint="title"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="79dp"
+        android:text="Comment" />
+
+    <EditText
+        android:id="@+id/etComment"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/etTitle"
+        android:layout_alignStart="@+id/etTitle"
+        android:layout_alignTop="@+id/tvComment"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+
+    <com.github.rahatarmanahmed.cpv.CircularProgressView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etComment"
+        android:layout_alignLeft="@+id/btPostComment"
+        android:layout_alignStart="@+id/btPostComment"
+        android:numStars="5"
+        android:rating="3.0"
+        android:stepSize="1.0" />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/ratingBar2"
+        android:text="Rating" />
+
+    <Button
+        android:id="@+id/btPostComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etComment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="106dp"
+        android:text="Post Comment" />
+
+
+</RelativeLayout>

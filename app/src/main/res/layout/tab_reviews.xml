@@ -1,18 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="10dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/tvSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="Summary"
+                android:textColor="#222"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view1"
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tvSummary"
+                android:background="@android:color/darker_gray" />
 
 
-    <TextView
+            <TextView
+                android:id="@+id/tvVenueName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view1"
+                android:paddingTop="30px"
+                android:text="Overall Rating"
+                android:textColor="#222"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvRatingNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvVenueName"
+                android:text="4.6"
+                android:textColor="#222"
+                android:textSize="15dp"
+                android:textStyle="bold"
+
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="10dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <TextView
+                android:id="@+id/tvCommenterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="by Anonymous Commenter on Dec 14"
+                android:textColor="#222"
+                android:textSize="11dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvCommentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCommenterName"
+                android:maxLines="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="This is the comment title"
+                android:textColor="#222"
+                android:textSize="16dp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/tvCommentBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCommentTitle"
+                android:maxLines="10"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="@string/lorem_ipsum"
+                android:textColor="#222"
+                android:textSize="14dp"
+                android:textStyle="normal"
+
+
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/ly_bar_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+
+        <android.support.design.widget.FloatingActionButton
+
+            android:id="@+id/fab_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tab 4jdkjdkdjdld"
-        android:id="@+id/textView"
-        android:textColor="@color/tabsScrollColor"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_add_white_48dp"
+            app:borderWidth="0dp"
+            app:elevation="4dp"
+            app:fabSize="normal" />
+        <!--app:pressedTranslationZ="12dp"-->
 
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/card_view2"
+        android:layout_alignEnd="@+id/card_view2" />
 
+    </LinearLayout>
 </RelativeLayout>
+

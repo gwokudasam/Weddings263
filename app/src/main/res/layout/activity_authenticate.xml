@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthenticateActivity">
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText2"
+        android:layout_alignEnd="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_marginBottom="74dp"
+        android:ems="10"
+        android:hint="someone@domain.com"
+        android:inputType="textEmailAddress">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignStart="@+id/editText1"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:text="@string/login" />
+
+    <!--  <ProgressBar
+          android:id="@+id/progressBar1"
+          style="?android:attr/progressBarStyleLarge"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:visibility="invisible" />-->
+
+    <com.github.rahatarmanahmed.cpv.CircularProgressView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progressBar1"
+
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+
+        android:layout_below="@+id/editText2"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        app:cpv_indeterminate="true" />
+
+
+</RelativeLayout>

@@ -24,4 +24,15 @@
     <string name="client_key">9C9lUNyxNhAXyHKJCvKxsjiY6Jo3o13ab6wA08Ri</string>
     <string name="master_key">rRomBuByx2GlzrIKjl5ciAASXqChTVfa9abIteKf</string>
 
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed efficitur leo. Sed rutrum pharetra enim, non volutpat metus faucibus pharetra. Maecenas hendrerit sodales eros, ut gravida est fermentum non. Quisque sollicitudin dolor nec arcu sollicitudin lacinia. In est dui, porttitor nec ligula et, hendrerit faucibus felis. Suspendisse in pretium urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus nunc vitae urna elementum vulputate. Nullam ut erat sed mauris ultrices sodales. Sed nunc velit, tristique sed mattis ac, vestibulum ac est. Duis finibus ut nisl nec venenatis. In aliquet nibh vitae erat posuere, eu hendrerit purus euismod. Phasellus orci neque, blandit sit amet tempor at, mollis vitae tellus. Curabitur tincidunt ornare tellus eu dignissim. Sed dignissim lacus ut lorem finibus lacinia. Aenean commodo dui nec diam consequat, eu ultrices elit sagittis.</string>
+    <string name="title_activity_add_review">Add a Review</string>
+    <string name="title_activity_login_or_signup">LoginOrSignupActivity</string>
+    <string name="title_activity_authenticate">AuthenticateActivity</string>
+    <string name="action_about">About</string>
+    <string name="action_logout">Logout</string>
+
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+
+
 </resources>

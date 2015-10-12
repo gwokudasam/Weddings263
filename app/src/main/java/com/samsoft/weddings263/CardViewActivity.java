@@ -1,29 +1,28 @@
 package com.samsoft.weddings263;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
 
-public class CardViewActivity extends ActionBarActivity {
+public class CardViewActivity extends AppCompatActivity {
+    private static String LOG_TAG = CardViewActivity.class.getSimpleName();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "CardViewActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        //mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.card_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -52,12 +51,8 @@ public class CardViewActivity extends ActionBarActivity {
 
     private ArrayList<DataObject> getDataSet() {
         ArrayList results = new ArrayList<DataObject>();
-        String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-                "Phasellus nec dui in lorem tempus venenatis. Sed mollis imperdiet faucibus. " +
-                "Quisque eget velit et turpis sagittis vestibulum vel in est. Maecenas tincidunt," +
-                " magna in laoreet auctor, justo risus sagittis leo, sed sagittis nulla velit vel " +
-                "ante. Aliquam suscipit velit nunc, nec maximus elit feugiat sit amet. Nam in orci rutrum," +
-                " imperdiet sem eu, fermentum lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ";
+
+        String loremIpsum = getResources().getString(R.string.lorem_ipsum);
 
         for (int index = 0; index < 20; index++) {
             DataObject obj = new DataObject("Some Primary Text " + index,

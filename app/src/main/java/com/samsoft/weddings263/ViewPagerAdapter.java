@@ -31,13 +31,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             return venuesTab;
         }else if(position == 1) // if the position is 1 we are returning the Second tab
         {
-            EventsTab eventsTab = new EventsTab();
-            return eventsTab;
-        }else if(position == 2)
-        {
             StoreTab storeTab = new StoreTab();
             return storeTab;
-        }else if(position == 3)
+        } else if (position == 2)
         {
             ServicesTab servicesTab = new ServicesTab();
             return servicesTab;

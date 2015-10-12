@@ -2,43 +2,43 @@ package com.samsoft.weddings263;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RatingBar;
+import android.view.View;
+import android.widget.ProgressBar;
+
+import com.parse.ParseUser;
 
 /**
  * Created by Samuel Gwokuda on 15/02/2015.
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     // Declaring Your View and Variables
 
+    protected ProgressBar mProgressBar;
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Venues","Events","Store","Services","Reviews"};
-    int numberOfTabs = 5;
-
-
-    //private RatingBar ratingBar;
+    CharSequence Titles[] = {"Venues", "Store", "Services"};
+    int numberOfTabs = Titles.length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //final CircularProgressView mProgressBar = (CircularProgressView) findViewById(R.id.pgBar);
         // Creating The Toolbar and setting it as the Toolbar for the activity
-
+        //mProgressBar.setVisibility(View.INVISIBLE);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles, numberOfTabs);
@@ -62,10 +62,7 @@ public class MainActivity extends ActionBarActivity {
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,8 +81,8 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_exit) {
             //discouraged
-            AlertDialog.Builder alertDialogBuilder =  new AlertDialog.Builder(this)
-                    .setTitle("Exit Weddings263?")
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+
                     .setMessage("Are you sure you want to exit Weddings263?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -97,13 +94,33 @@ public class MainActivity extends ActionBarActivity {
                             // do nothing
                             dialog.cancel();
                         }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert);
+                    });
+            //.setIcon(android.R.drawable.ic_dialog_alert);
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
             return true;
+        } else if (id == R.id.action_logout) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            ParseUser.logOutInBackground();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            Intent intent = new Intent(this, LoginOrSignupActivity.class);
+            startActivity(intent);
+            this.finish();
+
+        } else if (id == R.id.action_about) {
+            AlertDialog.Builder aboutDialogBuilder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+            aboutDialogBuilder.setIcon(android.R.drawable.dark_header)
+                    .setTitle("About Weddings263")
+                    .setCancelable(true)
+                    .setMessage("\n\nDeveloped by Samuel Gwokuda under " +
+                            "Muzinda Hub\nAll rights reserved (c) 2015\n+263773452222\n" +
+                            "gwokudasam@gmail.com");
+
+            AlertDialog dialogAbout = aboutDialogBuilder.create();
+            dialogAbout.show();
+
         }
 
         return super.onOptionsItemSelected(item);

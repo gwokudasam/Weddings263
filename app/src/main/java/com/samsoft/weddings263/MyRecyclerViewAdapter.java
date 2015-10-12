@@ -16,35 +16,15 @@ public class MyRecyclerViewAdapter extends RecyclerView
         .Adapter<MyRecyclerViewAdapter
         .DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<DataObject> mDataset;
     private static MyClickListener myClickListener;
-
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
-        TextView label;
-        TextView dateTime;
-
-        public DataObjectHolder(View itemView) {
-            super(itemView);
-            label = (TextView) itemView.findViewById(R.id.textView);
-            dateTime = (TextView) itemView.findViewById(R.id.textView2);
-            Log.i(LOG_TAG, "Adding Listener");
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
-    }
-
-    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }
+    private ArrayList<DataObject> mDataset;
 
     public MyRecyclerViewAdapter(ArrayList<DataObject> myDataset) {
         mDataset = myDataset;
+    }
+
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        MyRecyclerViewAdapter.myClickListener = myClickListener;
     }
 
     @Override
@@ -59,8 +39,11 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.label.setText(mDataset.get(position).getmText1());
-        holder.dateTime.setText(mDataset.get(position).getmText2());
+
+        holder.VenueName.setText(mDataset.get(position).getVenueName());
+        //VenueName, VenueAddress, Rating, Email, TelephoneNumber, Description;
+        //TODO
+
     }
 
     public void addItem(DataObject dataObj, int index) {
@@ -79,6 +62,31 @@ public class MyRecyclerViewAdapter extends RecyclerView
     }
 
     public interface MyClickListener {
-        public void onItemClick(int position, View v);
+        void onItemClick(int position, View v);
+    }
+
+    public static class DataObjectHolder extends RecyclerView.ViewHolder
+            implements View
+            .OnClickListener {
+        TextView VenueName, VenueAddress, Rating, Email, TelephoneNumber, Description;
+
+
+        public DataObjectHolder(View itemView) {
+            super(itemView);
+
+            VenueName = (TextView) itemView.findViewById(R.id.tvVenueName);
+            VenueAddress = (TextView) itemView.findViewById(R.id.tvAddress);
+            Rating = (TextView) itemView.findViewById(R.id.tvRating);
+            Email = (TextView) itemView.findViewById(R.id.tvEmail);
+            TelephoneNumber = (TextView) itemView.findViewById(R.id.tvPhone);
+            Description = (TextView) itemView.findViewById(R.id.tvLongDescription);
+            Log.i(LOG_TAG, "Adding Listener");
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
     }
 }

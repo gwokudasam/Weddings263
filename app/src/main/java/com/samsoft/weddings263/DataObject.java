@@ -1,27 +1,28 @@
 package com.samsoft.weddings263;
 
 public class DataObject {
-    private String mText1;
-    private String mText2;
+    private String venueName;
+
+    private String venueLocation;
 
     DataObject (String text1, String text2){
-        mText1 = text1;
-        mText2 = text2;
+        venueName = text1;
+        venueLocation = text2;
     }
 
-    public String getmText1() {
-        return mText1;
+    public String getVenueName() {
+        return venueName;
     }
 
-    public void setmText1(String mText1) {
-        this.mText1 = mText1;
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
     }
 
-    public String getmText2() {
-        return mText2;
+    public String getVenueLocation() {
+        return venueLocation;
     }
 
-    public void setmText2(String mText2) {
-        this.mText2 = mText2;
+    public void setVenueLocation(String venueLocation) {
+        this.venueLocation = venueLocation;
     }
 }

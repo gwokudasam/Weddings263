@@ -6,14 +6,18 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
+        android:name=".Weddings263"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/weddinglogo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginOrSignupActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +44,18 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samsoft.weddings263.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddReviewActivity"
+            android:label="@string/title_activity_add_review"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samsoft.weddings263.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AuthenticateActivity"
+            android:label="@string/title_activity_authenticate">
         </activity>
     </application>
 
