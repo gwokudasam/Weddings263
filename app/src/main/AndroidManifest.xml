@@ -30,14 +30,6 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name=".CardViewActivity"
-            android:label="@string/title_activity_card_view"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.samsoft.weddings263.MainActivity" />
-        </activity>
-        <activity
             android:name=".AboutWeddings263"
             android:label="@string/title_activity_about_weddings263"
             android:parentActivityName=".MainActivity" >

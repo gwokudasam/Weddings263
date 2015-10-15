@@ -25,6 +25,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+
+        <com.github.rahatarmanahmed.cpv.CircularProgressView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progressBar2"
+
+            android:layout_width="40dp"
+
+            android:layout_height="40dp"
+
+            android:layout_below="@+id/pager"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="59dp"
+            app:cpv_indeterminate="true" />
+
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

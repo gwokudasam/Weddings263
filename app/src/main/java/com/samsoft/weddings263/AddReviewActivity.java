@@ -16,17 +16,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-
 public class AddReviewActivity extends AppCompatActivity {
     private static final String COMMENT = "COMMENT";
     private static final String DATE = "DATE";
     private static final String RATING = "RATING";
     private static final String COMMENT_TITLE = "COMMENT TITLE";
     private static final String ANONYMOUS_NAME = "ANONYMOUS_NAME";
+    ParseObject obj;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Button postComment;
+
+    public static void undoPostComment(View v) {
+        Snackbar.make(v, "Your comment has been removed!", Snackbar.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,38 +41,37 @@ public class AddReviewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        EditText name = (EditText) findViewById(R.id.etName);
-        EditText title = (EditText) findViewById(R.id.etTitle);
-        RatingBar rating = (RatingBar) findViewById(R.id.ratingBar2);
-        EditText comment = (EditText) findViewById(R.id.etComment);
+        final EditText name = (EditText) findViewById(R.id.etName);
+        final EditText title = (EditText) findViewById(R.id.etTitle);
+        final RatingBar rating = (RatingBar) findViewById(R.id.ratingBar2);
+        final EditText comment = (EditText) findViewById(R.id.etComment);
 
+        obj = new ParseObject("Reviews");
 
-        final ParseObject obj = new ParseObject("Reviews");
-        obj.add(AddReviewActivity.COMMENT, comment.getText().toString());
-        obj.add(AddReviewActivity.COMMENT_TITLE, title.getText().toString());
-        obj.add(AddReviewActivity.ANONYMOUS_NAME, name.getText().toString());
-        obj.add(AddReviewActivity.RATING, rating.getRating()); //float
-
+        obj.put(AddReviewActivity.COMMENT, comment.getText().toString());
+        obj.put(AddReviewActivity.COMMENT_TITLE, title.getText().toString());
+        obj.put(AddReviewActivity.ANONYMOUS_NAME, name.getText().toString());
+        obj.put(AddReviewActivity.RATING, rating.getRating());
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        obj.add(AddReviewActivity.DATE, dateFormat.format(Calendar.getInstance().getTime()));
-
+        obj.put(AddReviewActivity.DATE, dateFormat.format(Calendar.getInstance().getTime()));
 
         postComment = (Button) findViewById(R.id.btPostComment);
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 try {
-
                     obj.saveInBackground();
+
                 } catch (Exception e) {
 
                 } finally {
-                    //// TODO: 09-Oct-2015
+                    name.setText("");
+                    title.setText("");
+                    rating.setRating(0.0f);
+                    comment.setText("");
                 }
-
                 Snackbar.make(findViewById(R.id.btPostComment), "Your review has been added.Thanks!", Snackbar.LENGTH_LONG)
 
                         .setAction("UNDO", new View.OnClickListener() {
@@ -76,15 +79,12 @@ public class AddReviewActivity extends AppCompatActivity {
                             public void onClick(View v) {
                                 //TODO
                                 //undo post comment
-
+                                undoPostComment(v);
                             }
                         })
                         .show();
             }
         });
-
-
     }
-
 
 }

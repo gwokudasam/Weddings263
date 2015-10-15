@@ -1,4 +1,4 @@
-package com.samsoft.weddings263;
+package com.samsoft.weddings263.data;
 
 /**
  * Created by gwokudasam on 08-Oct-2015.
@@ -11,11 +11,11 @@ public class VenueItem {
     private int venuePic;
     private String venueAddress;
     private String description;
+    private double latitude;
+    private double longitude;
 
-    public VenueItem() {
-    }
-
-    public VenueItem(String venueName, String email, String phone, String address, String reviews, String description, int venuePic) {
+    public VenueItem(String venueName, String email, String phone, String address,
+                     String reviews, String description, int venuePic, double latitude, double longitude) {
 
         this.venueName = venueName;
         this.email = email;
@@ -24,63 +24,45 @@ public class VenueItem {
         this.reviews = reviews;
         this.description = description;
         this.venuePic = venuePic;
-
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getVenueAddress() {
         return venueAddress;
     }
 
-    public void setVenueAddress(String venueAddress) {
-        this.venueAddress = venueAddress;
-    }
-
     public int getVenuePic() {
         return venuePic;
     }
 
-    public void setVenuePic(int venuePic) {
-        this.venuePic = venuePic;
-    }
-
     public String getDescription() {
-
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public String getReviews() {
         return reviews;
     }
 
-    public void setReviews(String reviews) {
-        this.reviews = reviews;
-    }
-
     public String getVenueName() {
         return venueName;
-    }
-
-    public void setVenueName(String venueName) {
-        this.venueName = venueName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+
 }

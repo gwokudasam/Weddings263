@@ -3,10 +3,13 @@ package com.samsoft.weddings263;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -19,21 +22,52 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samsoft.weddings263.data.VenueItem;
+
 import java.util.ArrayList;
 
 /**
  * Created by Samuel Gwokuda on 02-Oct-2015.
  */
-public class CustomListAdapter extends BaseAdapter {
+public class CustomListAdapter extends BaseAdapter implements LocationListener {
+    double currentLongitude;
+    double currentLatitude;
     private ArrayList<VenueItem> listData;
     private LayoutInflater layoutInflater;
     private Context context;
-
+    private LocationManager locationManager;
+    private Location location;
+    private String provider;
 
     public CustomListAdapter(Context aContext, ArrayList<VenueItem> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
-        context = aContext;
+        this.context = aContext;
+
+        // Getting LocationManager object
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        // Creating an empty criteria object
+        Criteria criteria = new Criteria();
+
+        // Getting the name of the provider that meets the criteria
+        provider = locationManager.getBestProvider(criteria, false);
+
+        if (provider != null && !provider.equals("")) {
+            // Get the location from the given provider
+            location = locationManager.getLastKnownLocation(provider);
+
+            locationManager.requestLocationUpdates(provider, 20000, 1, this);
+
+            if (location != null)
+                onLocationChanged(location);
+            else
+                Toast.makeText(context, "Location can't be retrieved", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(context, "No Provider Found", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public static boolean isLocationEnabled(Context context) {
@@ -54,8 +88,6 @@ public class CustomListAdapter extends BaseAdapter {
             locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             return !TextUtils.isEmpty(locationProviders);
         }
-
-
     }
 
     @Override
@@ -126,30 +158,25 @@ public class CustomListAdapter extends BaseAdapter {
 
                 Intent i = new Intent(android.content.Intent.ACTION_CALL,
                         Uri.parse("tel:+" + listData.get(position).getPhone()));
-                context.startActivity(i);
+                context.startActivity(i);//assume the app has been granted permissions
 
             }
         });
 
-
         holder.btnNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isLocationEnabled(context) == true) {
 
-                    LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-                    Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    double currentLongitude = location.getLongitude();
-                    double currentLattitude = location.getLatitude();
+                if (isLocationEnabled(context)) {
+                    if (location != null) {
+                        currentLongitude = location.getLongitude();
+                        currentLatitude = location.getLatitude();
+                    }
 
-                    //double targetLat= -17.730775;
-                    //double targetLang = 31.167449;
+                    double targetLat = listData.get(position).getLatitude();
+                    double targetLang = listData.get(position).getLongitude();
 
-                    double targetLat = -17.707012;
-                    double targetLang = 31.139737;
-
-
-                    String url = "http://maps.google.com/maps?saddr=" + currentLattitude + "," + currentLongitude + "&daddr=" + targetLat + "," + targetLang + "&mode=driving";
+                    String url = "http://maps.google.com/maps?saddr=" + currentLatitude + "," + currentLongitude + "&daddr=" + targetLat + "," + targetLang + "&mode=driving";
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
                     intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
                     context.startActivity(intent);
@@ -170,16 +197,34 @@ public class CustomListAdapter extends BaseAdapter {
                 }
             }
         });
-
-
         return convertView;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        currentLongitude = location.getLongitude();
+        currentLatitude = location.getLatitude();
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
     }
 
     static class ViewHolder {
 
         TextView VenueNameView;
         TextView VenueAddressView;
-        //TextView VenueLocationView;
         TextView RatingsReviewsView;
         TextView EmailView;
         TextView TelephoneNumberView;
@@ -188,12 +233,6 @@ public class CustomListAdapter extends BaseAdapter {
         Button btnAddReviews;
         ImageButton btnNavigate;
         ImageButton btnCall;
-
-
     }
 
 }
-
-
-
-

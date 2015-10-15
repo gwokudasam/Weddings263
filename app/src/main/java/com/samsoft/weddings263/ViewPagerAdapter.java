@@ -33,17 +33,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         {
             StoreTab storeTab = new StoreTab();
             return storeTab;
-        } else if (position == 2)
-        {
+        } else {
             ServicesTab servicesTab = new ServicesTab();
             return servicesTab;
         }
-        else
-        {
-            ReviewsTab reviewsTab = new ReviewsTab();
-            return reviewsTab;
-        }
-
     }
 
     // This method return the titles for the Tabs in the Tab Strip

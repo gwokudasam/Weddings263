@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.parse.ParseUser;
 
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Declaring Your View and Variables
 
-    protected ProgressBar mProgressBar;
+
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
@@ -33,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //final CircularProgressView mProgressBar = (CircularProgressView) findViewById(R.id.pgBar);
-        // Creating The Toolbar and setting it as the Toolbar for the activity
-        //mProgressBar.setVisibility(View.INVISIBLE);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
@@ -73,14 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_exit) {
-            //discouraged
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
 
                     .setMessage("Are you sure you want to exit Weddings263?")
@@ -91,20 +80,17 @@ public class MainActivity extends AppCompatActivity {
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // do nothing
                             dialog.cancel();
                         }
                     });
-            //.setIcon(android.R.drawable.ic_dialog_alert);
-
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
             return true;
         } else if (id == R.id.action_logout) {
-            mProgressBar.setVisibility(View.VISIBLE);
+            // mProgressBar.setVisibility(View.VISIBLE);
             ParseUser.logOutInBackground();
-            mProgressBar.setVisibility(View.INVISIBLE);
+            //mProgressBar.setVisibility(View.INVISIBLE);
             Intent intent = new Intent(this, LoginOrSignupActivity.class);
             startActivity(intent);
             this.finish();
@@ -117,12 +103,9 @@ public class MainActivity extends AppCompatActivity {
                     .setMessage("\n\nDeveloped by Samuel Gwokuda under " +
                             "Muzinda Hub\nAll rights reserved (c) 2015\n+263773452222\n" +
                             "gwokudasam@gmail.com");
-
             AlertDialog dialogAbout = aboutDialogBuilder.create();
             dialogAbout.show();
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

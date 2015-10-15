@@ -1,19 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.samsoft.weddings263.AddReviewActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_addreview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
+        android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/AppTheme"></android.support.v7.widget.Toolbar>
+        android:theme="@style/AppTheme"
+        app:popupTheme="@style/Base.Widget.AppCompat.Toolbar"
+        app:theme="@style/ToolBarStyle"
+
+        />
 
 
     <TextView
+
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +117,9 @@
         android:layout_below="@+id/etComment"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="106dp"
-        android:text="Post Comment" />
+        android:background="@drawable/button_bg"
+        android:text="Post Comment"
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>

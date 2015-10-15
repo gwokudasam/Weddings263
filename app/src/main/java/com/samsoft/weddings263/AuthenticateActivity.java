@@ -22,7 +22,6 @@ public class AuthenticateActivity extends AppCompatActivity {
     protected EditText mEmailField;
     protected EditText mPasswordField;
     protected Button mButton;
-    //protected ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,6 @@ public class AuthenticateActivity extends AppCompatActivity {
         mEmailField = (EditText) findViewById(R.id.editText1);
         mPasswordField = (EditText) findViewById(R.id.editText2);
         mButton = (Button) findViewById(R.id.button1);
-        //mProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
         final CircularProgressView mProgressBar = (CircularProgressView) findViewById(R.id.progressBar1);
         Bundle bundle = getIntent().getExtras();
         mAction = bundle.getString(LoginOrSignupActivity.TYPE);
@@ -58,33 +56,21 @@ public class AuthenticateActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             mProgressBar.setVisibility(View.INVISIBLE);
                             if (e == null) {
-                                // Hooray! Let them use the app now.
-
                                 startActivity(new Intent(
                                         AuthenticateActivity.this,
                                         MainActivity.class));
                             } else {
-                                // Sign up didn't succeed. Look at the
-                                // ParseException to figure out what went wrong
-
-
                                 mPasswordField.setText("");
                                 mEmailField.setText("");
-
                                 Toast.makeText(AuthenticateActivity.this,
                                         "Sign up failed! Try again.",
                                         Toast.LENGTH_LONG).show();
-
-                                //TODO
-                                // reset edittexts
-
-
                             }
                         }
                     });
                 } else {
-					/*
-					 * Login using ParseUser
+                    /*
+                     * Login using ParseUser
 					 */
                     ParseUser.logInInBackground(username, password,
                             new LogInCallback() {

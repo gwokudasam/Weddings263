@@ -12,8 +12,8 @@ import com.parse.ParseACL;
  */
 public class Weddings263 extends Application {
 
-    private static final String APP_ID = "Zkm7SXTdhtvfAsNuW0gilw8YZ1yHgcIaZ6Fz6Xia";
-    private static final String CLIENT_ID = "9C9lUNyxNhAXyHKJCvKxsjiY6Jo3o13ab6wA08Ri";
+    public static final String APP_ID = "Zkm7SXTdhtvfAsNuW0gilw8YZ1yHgcIaZ6Fz6Xia";
+    public static final String CLIENT_ID = "9C9lUNyxNhAXyHKJCvKxsjiY6Jo3o13ab6wA08Ri";
     private static final String MASTER_KEY = "rRomBuByx2GlzrIKjl5ciAASXqChTVfa9abIteKf";
 
     private static final String TAG = Weddings263.class.getSimpleName();
